@@ -1,0 +1,25 @@
+# WebGIS Tsunami - Python Backend Dependencies
+
+# Core Framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+pydantic==2.5.3
+
+# Geospatial Processing
+rasterio==1.3.9
+geopandas==0.14.1
+shapely==2.0.2
+
+# Numerical Computing
+numpy==1.26.3
+scipy==1.11.4
+scikit-learn==1.4.0
+
+# HTTP Client
+httpx==0.26.0
+
+# CORS Middleware
+python-multipart==0.0.6
+
+# Utilities
+python-dotenv==1.0.0

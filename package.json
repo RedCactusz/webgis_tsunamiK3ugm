@@ -1,0 +1,30 @@
+{
+  "name": "webgis-tsunami",
+  "version": "1.0.0",
+  "private": true,
+  "description": "WebGIS Simulasi Bencana Tsunami - Modern Next.js + FastAPI Monorepo",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "docker-compose up",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:api": "cd apps/api && uvicorn app.main:app --reload --port 8000",
+    "build": "cd apps/web && npm run build",
+    "start": "docker-compose up",
+    "lint": "cd apps/web && npm run lint",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "turbo": "^1.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "react-chartjs-2": "^5.3.1"
+  }
+}

@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - api
+    volumes:
+      - ./apps/web:/app
+      - /app/node_modules
+      - /app/.next
+    command: npm run dev
+
+  api:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./apps/api:/app
+      - /path/to/data:/data  # Mount your raster/vector data directory
+    environment:
+      - RASTER_PATH=/data/Raster
+      - VEKTOR_PATH=/data/Vektor
+      - COASTLINE_PATH=/data/Vektor/Garis_Pantai_Bantul.shp
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
