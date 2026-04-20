@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS - WebGIS Tsunami
+════════════════════════════════════════════════ */
+:root {
+  /* Core Colors */
+  --bg: #060d1b;
+  --panel: #0a1628;
+  --panel2: #0d1d35;
+  --border: rgba(56, 189, 248, 0.14);
+  --border2: rgba(56, 189, 248, 0.08);
+
+  /* Accent Colors */
+  --accent: #38bdf8;
+  --accent2: #0ea5e9;
+  --accent-dark: #0284c7;
+
+  /* Text Colors */
+  --text: #ddeeff;
+  --text2: #a8ccee;
+  --muted: rgba(148, 200, 240, 0.55);
+
+  /* Status Colors */
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --danger: #f87171;
+
+  /* Data Source Colors */
+  --batnas: #fb923c;
+  --gebco: #38bdf8;
+  --blend: #c084fc;
+
+  /* Spacing & Sizing */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --transition: 0.18s ease;
+}
+
+@theme inline {
+  /* Background */
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel2: var(--panel2);
+
+  /* Border */
+  --color-border: var(--border);
+  --color-border2: var(--border2);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent2);
+  --color-accent-dark: var(--accent-dark);
+
+  /* Text */
+  --color-text: var(--text);
+  --color-text2: var(--text2);
+  --color-muted: var(--muted);
+
+  /* Status */
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+
+  /* Data Sources */
+  --color-batnas: var(--batnas);
+  --color-gebco: var(--gebco);
+  --color-blend: var(--blend);
+
+  /* Radius */
+  --radius-sm: var(--radius-sm);
+  --radius: var(--radius);
+  --radius-lg: var(--radius-lg);
+
+  /* Fonts */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ═══════════════════════════════════════════════
+   BASE STYLES
+════════════════════════════════════════════════ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLLBAR
+════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.4);
+}
+
+/* Leaflet Map Styles */
+.leaflet-container {
+  background: var(--bg);
+  font-family: var(--font-sans);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+}
+
+.leaflet-popup-tip {
+  background: var(--panel);
+}
+
+.leaflet-control-zoom a {
+  background: var(--panel);
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+.leaflet-control-zoom a:hover {
+  background: var(--panel2);
+  border-color: var(--accent);
+}
+
+/* Animations */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.animate-blink {
+  animation: blink 2s infinite;
+}
+
+/* Utility Classes */
+.text-accent {
+  color: var(--accent);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.bg-panel {
+  background: var(--panel);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
